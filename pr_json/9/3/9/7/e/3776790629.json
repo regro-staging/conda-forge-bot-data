@@ -1,0 +1,26 @@
+{
+  "base": {
+    "repo": {
+      "name": "polars-feedstock"
+    }
+  },
+  "closed_at": null,
+  "created_at": "2026-05-31T15:52:45Z",
+  "draft": false,
+  "e_tag": "\"b1f2b391ee98dbf2808f99780c6e74d7430de339b57ba9607cc3d0742dc4e370\"",
+  "head": {
+    "ref": "1.35.2_hdbc397"
+  },
+  "html_url": "https://github.com/conda-forge-bot-staging/polars-feedstock/pull/1216",
+  "id": 3776790629,
+  "labels": [],
+  "last_fetched": "2026-05-31T15:52:45.666668",
+  "last_modified": null,
+  "mergeable": null,
+  "mergeable_state": "unknown",
+  "merged": false,
+  "merged_at": null,
+  "number": 1216,
+  "state": "open",
+  "updated_at": "2026-05-31T15:52:45Z"
+}
