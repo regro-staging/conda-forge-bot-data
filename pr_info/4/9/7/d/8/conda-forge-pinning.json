@@ -203,6 +203,18 @@
         "migrator_version": 0,
         "name": "ruby31"
       }
+    },
+    {
+      "PR": {
+        "__lazy_json__": "pr_json/3776799304.json"
+      },
+      "data": {
+        "bot_rerun": false,
+        "migrator_name": "MigrationYaml",
+        "migrator_object_version": 1,
+        "migrator_version": 0,
+        "name": "libboost186"
+      }
     }
   ],
   "bad": false,
