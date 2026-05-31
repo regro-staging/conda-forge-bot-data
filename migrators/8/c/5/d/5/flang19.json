@@ -35,14 +35,7 @@
         },
         "links": [],
         "multigraph": false,
-        "nodes": [
-          {
-            "id": "conda-forge-pinning",
-            "payload": {
-              "__lazy_json__": "node_attrs/conda-forge-pinning.json"
-            }
-          }
-        ]
+        "nodes": []
       }
     },
     "exclude": [
@@ -353,7 +346,7 @@
     "platform_allowlist": [
       "win-64"
     ],
-    "pr_limit": 2,
+    "pr_limit": 6,
     "top_level": {
       "__set__": true,
       "elements": []
