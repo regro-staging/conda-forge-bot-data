@@ -1,0 +1,211 @@
+{
+  "__migrator__": true,
+  "args": [
+    "migrator_ts: 1724712608\n__migrator:\n    commit_message: Rebuild for python 3.13 freethreading\n    migration_number: 1\n    operation: key_add\n    primary_key: python\n    ordering:\n        python:\n            - 3.6.* *_cpython\n            - 3.7.* *_cpython\n            - 3.8.* *_cpython\n            - 3.9.* *_cpython\n            - 3.10.* *_cpython\n            - 3.11.* *_cpython\n            - 3.12.* *_cpython\n            - 3.13.* *_cp313  # new entry\n            - 3.13.* *_cp313t  # new entry\n            - 3.6.* *_73_pypy\n            - 3.7.* *_73_pypy\n            - 3.8.* *_73_pypy\n            - 3.9.* *_73_pypy\n    paused: true\n    longterm: true\n    pr_limit: 20\n    max_solver_attempts: 3  # this will make the bot retry \"not solvable\" stuff 12 times\n    exclude:\n        # this shouldn't attempt to modify the python feedstocks\n        - python\n        - pypy3.6\n        - pypy-meta\n        - cross-python\n        - python_abi\n    exclude_pinned_pkgs: false\n    additional_zip_keys:\n        - channel_sources\n        - is_freethreading\n        - is_abi3\n    wait_for_migrators:\n        - python313\n    ignored_deps_per_node:\n        matplotlib:\n            - pyqt\n\npython:\n- 3.13.* *_cp313t\nchannel_sources:\n- conda-forge/label/cython_dev,conda-forge\n# additional entries to add for zip_keys\nnumpy:\n- 2\npython_impl:\n- cpython\nis_freethreading:\n- true\nis_python_min:\n- false\nis_abi3:\n- false\n",
+    "python313t"
+  ],
+  "class": "MigrationYaml",
+  "kwargs": {
+    "additional_zip_keys": [
+      "channel_sources",
+      "is_freethreading",
+      "is_abi3"
+    ],
+    "automerge": false,
+    "bump_number": 1,
+    "check_solvable": true,
+    "commit_message": "Rebuild for python 3.13 freethreading",
+    "conda_forge_yml_patches": null,
+    "cycles": {
+      "__set__": true,
+      "elements": []
+    },
+    "effective_graph": {
+      "__nx_digraph__": true,
+      "node_link_data": {
+        "directed": true,
+        "graph": {
+          "outputs_lut": {},
+          "strong_exports": {
+            "__set__": true,
+            "elements": [
+              "c_compiler_stub",
+              "c_stdlib_stub",
+              "cuda_compiler_stub",
+              "cxx_compiler_stub",
+              "fortran_compiler_stub"
+            ]
+          }
+        },
+        "links": [],
+        "multigraph": false,
+        "nodes": []
+      }
+    },
+    "exclude": [
+      "python",
+      "pypy3.6",
+      "pypy-meta",
+      "cross-python",
+      "python_abi"
+    ],
+    "exclude_pinned_pkgs": false,
+    "force_pr_after_solver_attempts": 10,
+    "graph": {
+      "__nx_digraph__": true,
+      "node_link_data": {
+        "directed": true,
+        "graph": {
+          "outputs_lut": {},
+          "strong_exports": {
+            "__set__": true,
+            "elements": [
+              "c_compiler_stub",
+              "c_stdlib_stub",
+              "cuda_compiler_stub",
+              "cxx_compiler_stub",
+              "fortran_compiler_stub"
+            ]
+          }
+        },
+        "links": [],
+        "multigraph": false,
+        "nodes": [
+          {
+            "id": "conda-forge-pinning",
+            "payload": {
+              "__lazy_json__": "node_attrs/conda-forge-pinning.json"
+            }
+          }
+        ]
+      }
+    },
+    "ignored_deps_per_node": {
+      "matplotlib": [
+        "pyqt"
+      ]
+    },
+    "longterm": true,
+    "migration_number": 1,
+    "operation": "key_add",
+    "ordering": {
+      "python": [
+        "3.6.* *_cpython",
+        "3.7.* *_cpython",
+        "3.8.* *_cpython",
+        "3.9.* *_cpython",
+        "3.10.* *_cpython",
+        "3.11.* *_cpython",
+        "3.12.* *_cpython",
+        "3.13.* *_cp313",
+        "3.13.* *_cp313t",
+        "3.6.* *_73_pypy",
+        "3.7.* *_73_pypy",
+        "3.8.* *_73_pypy",
+        "3.9.* *_73_pypy"
+      ]
+    },
+    "package_names": {
+      "__set__": true,
+      "elements": []
+    },
+    "paused": true,
+    "piggy_back_migrations": [
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "CrossCompilationForARMAndPower",
+        "kwargs": {},
+        "name": "crosscompilationforarmandpower"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "StdlibMigrator",
+        "kwargs": {},
+        "name": "stdlibmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "CondaForgeYAMLCleanup",
+        "kwargs": {},
+        "name": "condaforgeyamlcleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "Jinja2VarsCleanup",
+        "kwargs": {},
+        "name": "jinja2varscleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "DuplicateLinesCleanup",
+        "kwargs": {},
+        "name": "duplicatelinescleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "PipMigrator",
+        "kwargs": {},
+        "name": "pipmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "LicenseMigrator",
+        "kwargs": {},
+        "name": "licensemigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "ExtraJinja2KeysCleanup",
+        "kwargs": {},
+        "name": "extrajinja2keyscleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "NoCondaInspectMigrator",
+        "kwargs": {},
+        "name": "nocondainspectmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "MPIPinRunAsBuildCleanup",
+        "kwargs": {},
+        "name": "mpipinrunasbuildcleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "PyPIOrgMigrator",
+        "kwargs": {},
+        "name": "pypiorgmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "CombineV1ConditionsMigrator",
+        "kwargs": {},
+        "name": "combinev1conditionsmigrator"
+      }
+    ],
+    "pr_limit": 2,
+    "primary_key": "python",
+    "top_level": {
+      "__set__": true,
+      "elements": []
+    },
+    "total_graph": null,
+    "wait_for_migrators": [
+      "python313"
+    ]
+  },
+  "name": "python313t"
+}
