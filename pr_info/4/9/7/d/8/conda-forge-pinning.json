@@ -143,6 +143,18 @@
         "migrator_version": 0,
         "name": "libflint31"
       }
+    },
+    {
+      "PR": {
+        "__lazy_json__": "pr_json/3862745209.json"
+      },
+      "data": {
+        "bot_rerun": false,
+        "migrator_name": "MigrationYaml",
+        "migrator_object_version": 1,
+        "migrator_version": 0,
+        "name": "poppler2411"
+      }
     }
   ],
   "bad": false,
