@@ -47,14 +47,28 @@
         "migrator_version": 0,
         "name": "libboost186"
       }
+    },
+    {
+      "PR": {
+        "__lazy_json__": "pr_json/3927388644.json"
+      },
+      "data": {
+        "bot_rerun": false,
+        "migrator_name": "MigrationYaml",
+        "migrator_object_version": 2,
+        "migrator_version": 0,
+        "name": "flang19"
+      }
     }
   ],
   "bad": false,
   "pinning_version": "2025.02.25.13.14.53",
   "pre_pr_migrator_attempt_ts": {
+    "fmt11": 1782301918,
     "ruby31": 1782301697
   },
   "pre_pr_migrator_attempts": {
+    "fmt11": 1,
     "ruby31": 1
   },
   "pre_pr_migrator_status": {},
