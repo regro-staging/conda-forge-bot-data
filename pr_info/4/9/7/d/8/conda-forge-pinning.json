@@ -191,16 +191,24 @@
         "migrator_version": 0,
         "name": "numpy2"
       }
+    },
+    {
+      "PR": {
+        "__lazy_json__": "pr_json/3927463257.json"
+      },
+      "data": {
+        "bot_rerun": false,
+        "migrator_name": "MigrationYaml",
+        "migrator_object_version": 1,
+        "migrator_version": 0,
+        "name": "ruby31"
+      }
     }
   ],
   "bad": false,
   "pinning_version": "2025.02.25.13.14.53",
-  "pre_pr_migrator_attempt_ts": {
-    "ruby31": 1782301697
-  },
-  "pre_pr_migrator_attempts": {
-    "ruby31": 1
-  },
+  "pre_pr_migrator_attempt_ts": {},
+  "pre_pr_migrator_attempts": {},
   "pre_pr_migrator_status": {},
   "smithy_version": "2026.6.14"
 }
