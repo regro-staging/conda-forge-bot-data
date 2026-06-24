@@ -1,0 +1,26 @@
+{
+  "base": {
+    "repo": {
+      "name": "pydantic-feedstock"
+    }
+  },
+  "closed_at": null,
+  "created_at": "2026-06-24T11:47:27Z",
+  "draft": false,
+  "e_tag": "\"f239188a70a525dd1be133b96f716409f78fce346b881bf34362db11aaab6322\"",
+  "head": {
+    "ref": "2.10.2_h521ab1"
+  },
+  "html_url": "https://github.com/conda-forge-bot-staging/pydantic-feedstock/pull/1387",
+  "id": 3927355695,
+  "labels": [],
+  "last_fetched": "2026-06-24T11:47:27.781312",
+  "last_modified": null,
+  "mergeable": null,
+  "mergeable_state": "unknown",
+  "merged": false,
+  "merged_at": null,
+  "number": 1387,
+  "state": "open",
+  "updated_at": "2026-06-24T11:47:27Z"
+}
