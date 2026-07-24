@@ -1,0 +1,364 @@
+{
+  "__migrator__": true,
+  "args": [
+    "__migrator:\n  kind: version\n  migration_number: 2\n  build_number: 1\n  commit_message: |\n    Rebuild for flang 19\n    \n    TL;DR: We are trying to switch our Fortran compilers on windows to flang.\n    This is not 100% guaranteed to work, but should be fine in the majority of cases.\n    \n    The new LLVM-based flang has become mature enough that it should be possible to\n    broadly switch over our Fortran compilers on windows to it (until now we only had\n    an ancient pre-LLVM flang 5, or alternatively the GCC-based `m2w64_fortran`).\n    \n    As such, this PR attempts to homogenize any use of `m2w64_fortran` and other `m2w64_*`\n    compilers to our default stack (which would then be MSVC + flang on windows), with\n    the exception of feedstocks for R-packages, which stay on the `m2w64_` compilers.\n    \n    Recipes that have hard-coded expectations about the name of the fortran compiler\n    will need to adjust to use `%FC%` or `flang-new` for the compiler name. Similarly,\n    you may need to change the linker to `%LD%` or use `lld-link`.\n    \n    It is also possible that you run into compilation errors due to differences in\n    compiler behaviour, bugs or as-yet unimplemented features. In case of compilation\n    errors due to stricter default language standards, you should be able to fix things\n    by passing `-std=legacy` to `FFLAGS`.\n    \n    If you have problems with this PR, feel free to ping the @c-f/flang-activation team.\n    In case you have convinced yourself that flang really is not ready yet to be used to\n    compile a given feedstock, you may also close this migrator PR.\n  platform_allowlist:\n    - win-64\n  override_cbc_keys:\n    - fortran_compiler_stub\n  exclude:\n    # these packages should be skipped because they're not built on windows, which\n    # contradicts platform_allowlist, see https://github.com/regro/cf-scripts/issues/3436\n    - mpich\n    - mvapich\n    - openmpi\n    # exclude r-packages, which generally use m2w64-stack consistently\n    - r-base\n    - r-acepack\n    - r-akima\n    - r-amap\n    - r-ash\n    - r-aws\n    - r-bain\n    - r-bigalgebra\n    - r-biglm\n    - r-blockmodeling\n    - r-bma\n    - r-bootstrap\n    - r-cairodevice\n    - r-chnosz\n    - r-circular\n    - r-classint\n    - r-clinfun\n    - r-clues\n    - r-cluster\n    - r-clustercrit\n    - r-cmprsk\n    - r-copula\n    - r-coxboost\n    - r-coxphf\n    - r-cubature\n    - r-ddalpha\n    - r-delaporte\n    - r-deldir\n    - r-desctools\n    - r-desolve\n    - r-distributionutils\n    - r-dixontest\n    - r-dotcall64\n    - r-dplr\n    - r-dppackage\n    - r-dpq\n    - r-dse\n    - r-earth\n    - r-expm\n    - r-fastmatrix\n    - r-fd\n    - r-fgarch\n    - r-fields\n    - r-flashclust\n    - r-float\n    - r-fme\n    - r-gam\n    - r-gap\n    - r-gee\n    - r-geigen\n    - r-gglasso\n    - r-glasso\n    - r-glassofast\n    - r-glmmml\n    - r-glmnet\n    - r-gmm\n    - r-gss\n    - r-hdrcde\n    - r-hdtweedie\n    - r-hexbin\n    - r-hiclimr\n    - r-hiddenmarkov\n    - r-hier.part\n    - r-hmisc\n    - r-igraph\n    - r-interp\n    - r-iso\n    - r-kendall\n    - r-kernsmooth\n    - r-kfas\n    - r-l1pack\n    - r-labdsv\n    - r-lars\n    - r-lbfgsb3c\n    - r-leaps\n    - r-limsolve\n    - r-lmom\n    - r-lmtest\n    - r-logicreg\n    - r-logspline\n    - r-lokern\n    - r-lsei\n    - r-mclust\n    - r-mcr\n    - r-mda\n    - r-mets\n    - r-minpack.lm\n    - r-minqa\n    - r-mnormt\n    - r-mpmi\n    - r-mrfdepth\n    - r-muhaz\n    - r-multimode\n    - r-multitaper\n    - r-mvord\n    - r-mvtnorm\n    - r-n1qn1\n    - r-nimble\n    - r-nleqslv\n    - r-nlme\n    - r-nloptr\n    - r-nnls\n    - r-norm\n    - r-npregfast\n    - r-oce\n    - r-oceanview\n    - r-openmx\n    - r-pamr\n    - r-pan\n    - r-pbivnorm\n    - r-pcit\n    - r-pmcmrplus\n    - r-polspline\n    - r-pspline\n    - r-qap\n    - r-qtlrel\n    - r-quadprog\n    - r-quantreg\n    - r-randomfieldsutils\n    - r-randomforest\n    - r-randtoolbox\n    - r-rmr2\n    - r-rms\n    - r-rmumps\n    - r-rmutil\n    - r-robust\n    - r-robustbase\n    - r-rootsolve\n    - r-rrcov\n    - r-rrf\n    - r-rstpm2\n    - r-rxode\n    - r-rxode2\n    - r-seriation\n    - r-sgeostat\n    - r-signal\n    - r-sm\n    - r-softimpute\n    - r-spam\n    - r-spam64\n    - r-sparsem\n    - r-splancs\n    - r-splus2r\n    - r-stanheaders\n    - r-statmod\n    - r-subplex\n    - r-subselect\n    - r-survc1\n    - r-survidinri\n    - r-svd\n    - r-timsac\n    - r-tmvnsim\n    - r-tmvtnorm\n    - r-trend\n    - r-tripack\n    - r-tseries\n    - r-twdtw\n    - r-tweedie\n    - r-ucminf\n    - r-urca\n    - r-vegan\n    - r-vgam\n    - r-waveslim\nmigrator_ts: 1722763680.3089325\n\nfortran_compiler_version:      # [win64]\n  - 19                         # [win64]\n",
+    "flang19"
+  ],
+  "class": "MigrationYaml",
+  "kwargs": {
+    "automerge": false,
+    "build_number": 1,
+    "bump_number": 1,
+    "check_solvable": false,
+    "commit_message": "Rebuild for flang 19\n\nTL;DR: We are trying to switch our Fortran compilers on windows to flang.\nThis is not 100% guaranteed to work, but should be fine in the majority of cases.\n\nThe new LLVM-based flang has become mature enough that it should be possible to\nbroadly switch over our Fortran compilers on windows to it (until now we only had\nan ancient pre-LLVM flang 5, or alternatively the GCC-based `m2w64_fortran`).\n\nAs such, this PR attempts to homogenize any use of `m2w64_fortran` and other `m2w64_*`\ncompilers to our default stack (which would then be MSVC + flang on windows), with\nthe exception of feedstocks for R-packages, which stay on the `m2w64_` compilers.\n\nRecipes that have hard-coded expectations about the name of the fortran compiler\nwill need to adjust to use `%FC%` or `flang-new` for the compiler name. Similarly,\nyou may need to change the linker to `%LD%` or use `lld-link`.\n\nIt is also possible that you run into compilation errors due to differences in\ncompiler behaviour, bugs or as-yet unimplemented features. In case of compilation\nerrors due to stricter default language standards, you should be able to fix things\nby passing `-std=legacy` to `FFLAGS`.\n\nIf you have problems with this PR, feel free to ping the @c-f/flang-activation team.\nIn case you have convinced yourself that flang really is not ready yet to be used to\ncompile a given feedstock, you may also close this migrator PR.\n",
+    "conda_forge_yml_patches": null,
+    "cycles": {
+      "__set__": true,
+      "elements": []
+    },
+    "effective_graph": {
+      "__nx_digraph__": true,
+      "node_link_data": {
+        "directed": true,
+        "graph": {
+          "outputs_lut": {},
+          "strong_exports": {
+            "__set__": true,
+            "elements": [
+              "c_compiler_stub",
+              "c_stdlib_stub",
+              "cuda_compiler_stub",
+              "cxx_compiler_stub",
+              "fortran_compiler_stub"
+            ]
+          }
+        },
+        "links": [],
+        "multigraph": false,
+        "nodes": [
+          {
+            "id": "conda-forge-pinning",
+            "payload": {
+              "__lazy_json__": "node_attrs/conda-forge-pinning.json"
+            }
+          }
+        ]
+      }
+    },
+    "exclude": [
+      "mpich",
+      "mvapich",
+      "openmpi",
+      "r-base",
+      "r-acepack",
+      "r-akima",
+      "r-amap",
+      "r-ash",
+      "r-aws",
+      "r-bain",
+      "r-bigalgebra",
+      "r-biglm",
+      "r-blockmodeling",
+      "r-bma",
+      "r-bootstrap",
+      "r-cairodevice",
+      "r-chnosz",
+      "r-circular",
+      "r-classint",
+      "r-clinfun",
+      "r-clues",
+      "r-cluster",
+      "r-clustercrit",
+      "r-cmprsk",
+      "r-copula",
+      "r-coxboost",
+      "r-coxphf",
+      "r-cubature",
+      "r-ddalpha",
+      "r-delaporte",
+      "r-deldir",
+      "r-desctools",
+      "r-desolve",
+      "r-distributionutils",
+      "r-dixontest",
+      "r-dotcall64",
+      "r-dplr",
+      "r-dppackage",
+      "r-dpq",
+      "r-dse",
+      "r-earth",
+      "r-expm",
+      "r-fastmatrix",
+      "r-fd",
+      "r-fgarch",
+      "r-fields",
+      "r-flashclust",
+      "r-float",
+      "r-fme",
+      "r-gam",
+      "r-gap",
+      "r-gee",
+      "r-geigen",
+      "r-gglasso",
+      "r-glasso",
+      "r-glassofast",
+      "r-glmmml",
+      "r-glmnet",
+      "r-gmm",
+      "r-gss",
+      "r-hdrcde",
+      "r-hdtweedie",
+      "r-hexbin",
+      "r-hiclimr",
+      "r-hiddenmarkov",
+      "r-hier.part",
+      "r-hmisc",
+      "r-igraph",
+      "r-interp",
+      "r-iso",
+      "r-kendall",
+      "r-kernsmooth",
+      "r-kfas",
+      "r-l1pack",
+      "r-labdsv",
+      "r-lars",
+      "r-lbfgsb3c",
+      "r-leaps",
+      "r-limsolve",
+      "r-lmom",
+      "r-lmtest",
+      "r-logicreg",
+      "r-logspline",
+      "r-lokern",
+      "r-lsei",
+      "r-mclust",
+      "r-mcr",
+      "r-mda",
+      "r-mets",
+      "r-minpack.lm",
+      "r-minqa",
+      "r-mnormt",
+      "r-mpmi",
+      "r-mrfdepth",
+      "r-muhaz",
+      "r-multimode",
+      "r-multitaper",
+      "r-mvord",
+      "r-mvtnorm",
+      "r-n1qn1",
+      "r-nimble",
+      "r-nleqslv",
+      "r-nlme",
+      "r-nloptr",
+      "r-nnls",
+      "r-norm",
+      "r-npregfast",
+      "r-oce",
+      "r-oceanview",
+      "r-openmx",
+      "r-pamr",
+      "r-pan",
+      "r-pbivnorm",
+      "r-pcit",
+      "r-pmcmrplus",
+      "r-polspline",
+      "r-pspline",
+      "r-qap",
+      "r-qtlrel",
+      "r-quadprog",
+      "r-quantreg",
+      "r-randomfieldsutils",
+      "r-randomforest",
+      "r-randtoolbox",
+      "r-rmr2",
+      "r-rms",
+      "r-rmumps",
+      "r-rmutil",
+      "r-robust",
+      "r-robustbase",
+      "r-rootsolve",
+      "r-rrcov",
+      "r-rrf",
+      "r-rstpm2",
+      "r-rxode",
+      "r-rxode2",
+      "r-seriation",
+      "r-sgeostat",
+      "r-signal",
+      "r-sm",
+      "r-softimpute",
+      "r-spam",
+      "r-spam64",
+      "r-sparsem",
+      "r-splancs",
+      "r-splus2r",
+      "r-stanheaders",
+      "r-statmod",
+      "r-subplex",
+      "r-subselect",
+      "r-survc1",
+      "r-survidinri",
+      "r-svd",
+      "r-timsac",
+      "r-tmvnsim",
+      "r-tmvtnorm",
+      "r-trend",
+      "r-tripack",
+      "r-tseries",
+      "r-twdtw",
+      "r-tweedie",
+      "r-ucminf",
+      "r-urca",
+      "r-vegan",
+      "r-vgam",
+      "r-waveslim"
+    ],
+    "force_pr_after_solver_attempts": 10,
+    "graph": {
+      "__nx_digraph__": true,
+      "node_link_data": {
+        "directed": true,
+        "graph": {
+          "outputs_lut": {},
+          "strong_exports": {
+            "__set__": true,
+            "elements": [
+              "c_compiler_stub",
+              "c_stdlib_stub",
+              "cuda_compiler_stub",
+              "cxx_compiler_stub",
+              "fortran_compiler_stub"
+            ]
+          }
+        },
+        "links": [],
+        "multigraph": false,
+        "nodes": [
+          {
+            "id": "conda-forge-pinning",
+            "payload": {
+              "__lazy_json__": "node_attrs/conda-forge-pinning.json"
+            }
+          }
+        ]
+      }
+    },
+    "ignored_deps_per_node": null,
+    "kind": "version",
+    "longterm": false,
+    "migration_number": 2,
+    "override_cbc_keys": [
+      "fortran_compiler_stub"
+    ],
+    "package_names": {
+      "__set__": true,
+      "elements": [
+        "fortran_compiler_stub"
+      ]
+    },
+    "paused": false,
+    "piggy_back_migrations": [
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "CrossCompilationForARMAndPower",
+        "kwargs": {},
+        "name": "crosscompilationforarmandpower"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "StdlibMigrator",
+        "kwargs": {},
+        "name": "stdlibmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "FlangMigrator",
+        "kwargs": {},
+        "name": "flangmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "CondaForgeYAMLCleanup",
+        "kwargs": {},
+        "name": "condaforgeyamlcleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "Jinja2VarsCleanup",
+        "kwargs": {},
+        "name": "jinja2varscleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "DuplicateLinesCleanup",
+        "kwargs": {},
+        "name": "duplicatelinescleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "PipMigrator",
+        "kwargs": {},
+        "name": "pipmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "LicenseMigrator",
+        "kwargs": {},
+        "name": "licensemigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "ExtraJinja2KeysCleanup",
+        "kwargs": {},
+        "name": "extrajinja2keyscleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "NoCondaInspectMigrator",
+        "kwargs": {},
+        "name": "nocondainspectmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "MPIPinRunAsBuildCleanup",
+        "kwargs": {},
+        "name": "mpipinrunasbuildcleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "PyPIOrgMigrator",
+        "kwargs": {},
+        "name": "pypiorgmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "CombineV1ConditionsMigrator",
+        "kwargs": {},
+        "name": "combinev1conditionsmigrator"
+      }
+    ],
+    "platform_allowlist": [
+      "win-64"
+    ],
+    "pr_limit": 2,
+    "top_level": {
+      "__set__": true,
+      "elements": []
+    },
+    "total_graph": null
+  },
+  "name": "flang19"
+}

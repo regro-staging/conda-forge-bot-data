@@ -1,0 +1,58 @@
+{
+  "__migrator__": true,
+  "args": [],
+  "class": "Replacement",
+  "kwargs": {
+    "check_solvable": true,
+    "effective_graph": {
+      "__nx_digraph__": true,
+      "node_link_data": {
+        "directed": true,
+        "graph": {
+          "outputs_lut": {},
+          "strong_exports": {
+            "__set__": true,
+            "elements": [
+              "c_compiler_stub",
+              "c_stdlib_stub",
+              "cuda_compiler_stub",
+              "cxx_compiler_stub",
+              "fortran_compiler_stub"
+            ]
+          }
+        },
+        "links": [],
+        "multigraph": false,
+        "nodes": []
+      }
+    },
+    "graph": {
+      "__nx_digraph__": true,
+      "node_link_data": {
+        "directed": true,
+        "graph": {
+          "outputs_lut": {},
+          "strong_exports": {
+            "__set__": true,
+            "elements": [
+              "c_compiler_stub",
+              "c_stdlib_stub",
+              "cuda_compiler_stub",
+              "cxx_compiler_stub",
+              "fortran_compiler_stub"
+            ]
+          }
+        },
+        "links": [],
+        "multigraph": false,
+        "nodes": []
+      }
+    },
+    "new_pkg": "astropy-base",
+    "old_pkg": "astropy",
+    "pr_limit": 2,
+    "rationale": "The astropy feedstock has been split into two packages, astropy-base only has required dependencies and astropy now has all optional dependencies. To maintain the old behavior you should migrate to astropy-base.",
+    "total_graph": null
+  },
+  "name": "astropy-to-astropy-base"
+}
