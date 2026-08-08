@@ -1,0 +1,26 @@
+{
+  "base": {
+    "repo": {
+      "name": "zizmor-feedstock"
+    }
+  },
+  "closed_at": null,
+  "created_at": "2026-08-08T16:10:37Z",
+  "draft": false,
+  "e_tag": "\"47c13b94d302338bf6337a9d05357c30a9eabbb6878d89a7b9e7f1ad9cb0e857\"",
+  "head": {
+    "ref": "1.18.0_h3f66a3"
+  },
+  "html_url": "https://github.com/conda-forge-bot-staging/zizmor-feedstock/pull/1625",
+  "id": 4235152063,
+  "labels": [],
+  "last_fetched": "2026-08-08T16:10:38.438674",
+  "last_modified": null,
+  "mergeable": null,
+  "mergeable_state": "unknown",
+  "merged": false,
+  "merged_at": null,
+  "number": 1625,
+  "state": "open",
+  "updated_at": "2026-08-08T16:10:37Z"
+}
