@@ -95,6 +95,18 @@
         "migrator_version": 0,
         "name": "libflint35"
       }
+    },
+    {
+      "PR": {
+        "__lazy_json__": "pr_json/4235180342.json"
+      },
+      "data": {
+        "bot_rerun": false,
+        "migrator_name": "MigrationYaml",
+        "migrator_object_version": 1,
+        "migrator_version": 0,
+        "name": "ucx122"
+      }
     }
   ],
   "bad": false,
