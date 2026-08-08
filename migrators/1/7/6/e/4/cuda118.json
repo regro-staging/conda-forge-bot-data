@@ -1,0 +1,215 @@
+{
+  "__migrator__": true,
+  "args": [
+    "# In order to work, this timestamp needs to be newer than all other CUDA migrators\nmigrator_ts: 2145938400  # 2038-01-01\n__migrator:\n  kind:\n    version\n  migration_number:\n    1\n  build_number:\n    1\n  # This is intended as a _manual_ migrator to re-add CUDA 11.8, after we\n  # dropped it as version that's built by default; DO NOT unpause\n  paused: true\n  override_cbc_keys:\n    - cuda_compiler_stub\n  operation: key_add\n  check_solvable: false\n  primary_key: cuda_compiler_version\n  additional_zip_keys:\n    - cuda_compiler\n    - docker_image         # [linux]\n  ordering:\n    cuda_compiler:\n      - None\n      - cuda-nvcc\n      - nvcc\n    cuda_compiler_version:\n      - 12.4\n      - 12.6\n      - 12.8\n      - None\n      - 12.9\n      - 13.0\n      - 11.8\n    cuda_compiler_version_min:\n      - None\n      - 12.4\n      - 12.6\n      - 12.8\n      - 12.9\n      - 11.8\n\ncuda_compiler:              # [(linux or win64) and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n  - nvcc                    # [(linux or win64) and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n\ncuda_compiler_version:      # [(linux or win64) and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n  - 11.8                    # [(linux or win64) and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n\ncuda_compiler_version_min:  # [linux or win64]\n  - 11.8                    # [linux or win64]\n\nc_stdlib_version:           # [linux and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n  - 2.17                    # [linux and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n\nc_compiler_version:         # [linux and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n  - 11                      # [linux and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n\ncxx_compiler_version:       # [linux and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n  - 11                      # [linux and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n\nfortran_compiler_version:   # [linux and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n  - 11                      # [linux and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n\ndocker_image:                                             # [os.environ.get(\"BUILD_PLATFORM\", \"\").startswith(\"linux-\") and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n  ### Docker images with CUDA 11.8 support\n\n  # CUDA 11.8 builds (only x64 has a DEFAULT_LINUX_VERSION choice; alma9 not available)\n  - quay.io/condaforge/linux-anvil-x86_64-cuda11.8:cos7   # [linux64 and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\" and os.environ.get(\"BUILD_PLATFORM\") == \"linux-64\" and os.environ.get(\"DEFAULT_LINUX_VERSION\", \"ubi8\") == \"cos7\"]\n  - quay.io/condaforge/linux-anvil-x86_64-cuda11.8:ubi8   # [linux64 and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\" and os.environ.get(\"BUILD_PLATFORM\") == \"linux-64\" and os.environ.get(\"DEFAULT_LINUX_VERSION\", \"ubi8\") in (\"ubi8\", \"alma8\", \"alma9\")]\n\n  # CUDA 11.8 arch: native compilation (build == target)\n  - quay.io/condaforge/linux-anvil-aarch64-cuda11.8:ubi8  # [aarch64 and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\" and os.environ.get(\"BUILD_PLATFORM\") == \"linux-aarch64\"]\n  - quay.io/condaforge/linux-anvil-ppc64le-cuda11.8:ubi8  # [ppc64le and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\" and os.environ.get(\"BUILD_PLATFORM\") == \"linux-ppc64le\"]\n\n  # CUDA 11.8 arch: cross-compilation (build != target)\n  - quay.io/condaforge/linux-anvil-x86_64-cuda11.8:ubi8   # [aarch64 and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\" and os.environ.get(\"BUILD_PLATFORM\") == \"linux-64\"]\n  - quay.io/condaforge/linux-anvil-x86_64-cuda11.8:ubi8   # [ppc64le and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\" and os.environ.get(\"BUILD_PLATFORM\") == \"linux-64\"]\n",
+    "cuda118"
+  ],
+  "class": "MigrationYaml",
+  "kwargs": {
+    "additional_zip_keys": [
+      "cuda_compiler",
+      "docker_image"
+    ],
+    "automerge": false,
+    "build_number": 1,
+    "bump_number": 1,
+    "check_solvable": false,
+    "conda_forge_yml_patches": null,
+    "cycles": {
+      "__set__": true,
+      "elements": []
+    },
+    "effective_graph": {
+      "__nx_digraph__": true,
+      "node_link_data": {
+        "directed": true,
+        "graph": {
+          "outputs_lut": {},
+          "strong_exports": {
+            "__set__": true,
+            "elements": [
+              "c_compiler_stub",
+              "c_stdlib_stub",
+              "cuda_compiler_stub",
+              "cxx_compiler_stub",
+              "fortran_compiler_stub"
+            ]
+          }
+        },
+        "links": [],
+        "multigraph": false,
+        "nodes": [
+          {
+            "id": "conda-forge-pinning",
+            "payload": {
+              "__lazy_json__": "node_attrs/conda-forge-pinning.json"
+            }
+          }
+        ]
+      }
+    },
+    "force_pr_after_solver_attempts": 10,
+    "graph": {
+      "__nx_digraph__": true,
+      "node_link_data": {
+        "directed": true,
+        "graph": {
+          "outputs_lut": {},
+          "strong_exports": {
+            "__set__": true,
+            "elements": [
+              "c_compiler_stub",
+              "c_stdlib_stub",
+              "cuda_compiler_stub",
+              "cxx_compiler_stub",
+              "fortran_compiler_stub"
+            ]
+          }
+        },
+        "links": [],
+        "multigraph": false,
+        "nodes": [
+          {
+            "id": "conda-forge-pinning",
+            "payload": {
+              "__lazy_json__": "node_attrs/conda-forge-pinning.json"
+            }
+          }
+        ]
+      }
+    },
+    "ignored_deps_per_node": null,
+    "kind": "version",
+    "longterm": false,
+    "migration_number": 1,
+    "operation": "key_add",
+    "ordering": {
+      "cuda_compiler": [
+        "None",
+        "cuda-nvcc",
+        "nvcc"
+      ],
+      "cuda_compiler_version": [
+        12.4,
+        12.6,
+        12.8,
+        "None",
+        12.9,
+        13.0,
+        11.8
+      ],
+      "cuda_compiler_version_min": [
+        "None",
+        12.4,
+        12.6,
+        12.8,
+        12.9,
+        11.8
+      ]
+    },
+    "override_cbc_keys": [
+      "cuda_compiler_stub"
+    ],
+    "package_names": {
+      "__set__": true,
+      "elements": [
+        "cuda_compiler_stub"
+      ]
+    },
+    "paused": true,
+    "piggy_back_migrations": [
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "CrossCompilationForARMAndPower",
+        "kwargs": {},
+        "name": "crosscompilationforarmandpower"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "StdlibMigrator",
+        "kwargs": {},
+        "name": "stdlibmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "CondaForgeYAMLCleanup",
+        "kwargs": {},
+        "name": "condaforgeyamlcleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "Jinja2VarsCleanup",
+        "kwargs": {},
+        "name": "jinja2varscleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "DuplicateLinesCleanup",
+        "kwargs": {},
+        "name": "duplicatelinescleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "PipMigrator",
+        "kwargs": {},
+        "name": "pipmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "LicenseMigrator",
+        "kwargs": {},
+        "name": "licensemigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "ExtraJinja2KeysCleanup",
+        "kwargs": {},
+        "name": "extrajinja2keyscleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "NoCondaInspectMigrator",
+        "kwargs": {},
+        "name": "nocondainspectmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "MPIPinRunAsBuildCleanup",
+        "kwargs": {},
+        "name": "mpipinrunasbuildcleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "PyPIOrgMigrator",
+        "kwargs": {},
+        "name": "pypiorgmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "CombineV1ConditionsMigrator",
+        "kwargs": {},
+        "name": "combinev1conditionsmigrator"
+      }
+    ],
+    "pr_limit": 2,
+    "primary_key": "cuda_compiler_version",
+    "top_level": {
+      "__set__": true,
+      "elements": []
+    },
+    "total_graph": null
+  },
+  "name": "cuda118"
+}

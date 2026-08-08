@@ -1,0 +1,194 @@
+{
+  "__migrator__": true,
+  "args": [
+    "# time stamped to be the day before the CUDA 11.8 migrator\nmigrator_ts: 2145852000  # 2037-12-31\n__migrator:\n  # this migration should not be unpaused!\n  # It's intended to be copied on an as-needed basis to feedstocks that want to support tegra\n  paused: true\n  operation: key_add\n  migration_number:\n    1\n  build_number:\n    1\n  override_cbc_keys:\n    - cuda_compiler_stub\n  check_solvable: false\n  primary_key: cuda_compiler_version\n  ordering:\n    arm_variant_type:\n      - None\n      - sbsa\n      - tegra\n  additional_zip_keys:  # [linux and aarch64 and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n    - arm_variant_type  # [linux and aarch64 and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n  wait_for_migrators:\n    - cuda129\n    - aarch64 and ppc64le addition\n  commit_message: |2\n    Build for NVIDIA Tegra devices and CUDA 12.9\n\n    This migration adds `arm_variant_type=tegra` to the build matrix to support NVIDIA Tegra\n    devices compatible with CUDA 12.9. This migrator is only applicable to the `linux-aarch4`\n    platform because Tegra is specific to that architecture. Non-Tegra ARM\n    devices are assumed to be SBSA-compliant (Server Base System Architecture). The\n    default value of `arm_variant_type` is `sbsa` or it is undefined for non-ARM platforms.\n    Tegra devices compatible with CUDA 13.0 are SBSA-compliant, and do not need a separate\n    build. Only Orin (sm_87) and later devices are supported because earlier Tegra devices are\n    not supported by CUDA 12.9.\n\n    In addition to this migrator, the `arm-variant` package must be added to the build\n    requirements of the recipe in order to constrain the CUDA compiler to the correct variant.\n\n    ```yaml\n    # A fake selector may be needed for conda-build to pick up arm_variant_type as a variant\n    # [arm_variant_type]\n\n    requirements:\n      build:\n        - {{ compiler('cuda') }}\n        - arm-variant * {{ arm_variant_type }}  # [linux and aarch64 and cuda_compiler_version != \"None\"]\n    ```\n\n    For v1 recipes, the work-around looks as follows:\n    ```yaml\n    context:\n      # ensure arm_variant_type gets detected as a used variable\n      touch_arm_variant_type: ${{ arm_variant_type }}\n    ```\n\n    Please read the conda-forge CUDA recipe guide for more information:\n    https://github.com/conda-forge/cuda-feedstock/blob/main/recipe/doc/recipe_guide.md#building-for-arm-tegra-devices\n\nc_compiler_version:            # [linux and aarch64 and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n  - 14                         # [linux and aarch64 and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n\ncxx_compiler_version:          # [linux and aarch64 and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n  - 14                         # [linux and aarch64 and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n\nfortran_compiler_version:      # [linux and aarch64 and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n  - 14                         # [linux and aarch64 and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n\ncuda_compiler_version:         # [linux and aarch64 and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n  - 12.9                       # [linux and aarch64 and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n\nc_stdlib_version:              # [linux and aarch64 and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n  - 2.34                       # [linux and aarch64 and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n\narm_variant_type:              # [linux and aarch64 and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n  - tegra                      # [linux and aarch64 and os.environ.get(\"CF_CUDA_ENABLED\", \"False\") == \"True\"]\n",
+    "arm_variant_type"
+  ],
+  "class": "MigrationYaml",
+  "kwargs": {
+    "additional_zip_keys": [
+      "arm_variant_type"
+    ],
+    "automerge": false,
+    "build_number": 1,
+    "bump_number": 1,
+    "check_solvable": false,
+    "commit_message": "Build for NVIDIA Tegra devices and CUDA 12.9\n\nThis migration adds `arm_variant_type=tegra` to the build matrix to support NVIDIA Tegra\ndevices compatible with CUDA 12.9. This migrator is only applicable to the `linux-aarch4`\nplatform because Tegra is specific to that architecture. Non-Tegra ARM\ndevices are assumed to be SBSA-compliant (Server Base System Architecture). The\ndefault value of `arm_variant_type` is `sbsa` or it is undefined for non-ARM platforms.\nTegra devices compatible with CUDA 13.0 are SBSA-compliant, and do not need a separate\nbuild. Only Orin (sm_87) and later devices are supported because earlier Tegra devices are\nnot supported by CUDA 12.9.\n\nIn addition to this migrator, the `arm-variant` package must be added to the build\nrequirements of the recipe in order to constrain the CUDA compiler to the correct variant.\n\n```yaml\n# A fake selector may be needed for conda-build to pick up arm_variant_type as a variant\n# [arm_variant_type]\n\nrequirements:\n  build:\n    - {{ compiler('cuda') }}\n    - arm-variant * {{ arm_variant_type }}  # [linux and aarch64 and cuda_compiler_version != \"None\"]\n```\n\nFor v1 recipes, the work-around looks as follows:\n```yaml\ncontext:\n  # ensure arm_variant_type gets detected as a used variable\n  touch_arm_variant_type: ${{ arm_variant_type }}\n```\n\nPlease read the conda-forge CUDA recipe guide for more information:\nhttps://github.com/conda-forge/cuda-feedstock/blob/main/recipe/doc/recipe_guide.md#building-for-arm-tegra-devices\n",
+    "conda_forge_yml_patches": null,
+    "cycles": {
+      "__set__": true,
+      "elements": []
+    },
+    "effective_graph": {
+      "__nx_digraph__": true,
+      "node_link_data": {
+        "directed": true,
+        "graph": {
+          "outputs_lut": {},
+          "strong_exports": {
+            "__set__": true,
+            "elements": [
+              "c_compiler_stub",
+              "c_stdlib_stub",
+              "cuda_compiler_stub",
+              "cxx_compiler_stub",
+              "fortran_compiler_stub"
+            ]
+          }
+        },
+        "links": [],
+        "multigraph": false,
+        "nodes": []
+      }
+    },
+    "force_pr_after_solver_attempts": 10,
+    "graph": {
+      "__nx_digraph__": true,
+      "node_link_data": {
+        "directed": true,
+        "graph": {
+          "outputs_lut": {},
+          "strong_exports": {
+            "__set__": true,
+            "elements": [
+              "c_compiler_stub",
+              "c_stdlib_stub",
+              "cuda_compiler_stub",
+              "cxx_compiler_stub",
+              "fortran_compiler_stub"
+            ]
+          }
+        },
+        "links": [],
+        "multigraph": false,
+        "nodes": [
+          {
+            "id": "conda-forge-pinning",
+            "payload": {
+              "__lazy_json__": "node_attrs/conda-forge-pinning.json"
+            }
+          }
+        ]
+      }
+    },
+    "ignored_deps_per_node": null,
+    "longterm": false,
+    "migration_number": 1,
+    "operation": "key_add",
+    "ordering": {
+      "arm_variant_type": [
+        "None",
+        "sbsa",
+        "tegra"
+      ]
+    },
+    "override_cbc_keys": [
+      "cuda_compiler_stub"
+    ],
+    "package_names": {
+      "__set__": true,
+      "elements": [
+        "cuda_compiler_stub"
+      ]
+    },
+    "paused": true,
+    "piggy_back_migrations": [
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "CrossCompilationForARMAndPower",
+        "kwargs": {},
+        "name": "crosscompilationforarmandpower"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "StdlibMigrator",
+        "kwargs": {},
+        "name": "stdlibmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "CondaForgeYAMLCleanup",
+        "kwargs": {},
+        "name": "condaforgeyamlcleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "Jinja2VarsCleanup",
+        "kwargs": {},
+        "name": "jinja2varscleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "DuplicateLinesCleanup",
+        "kwargs": {},
+        "name": "duplicatelinescleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "PipMigrator",
+        "kwargs": {},
+        "name": "pipmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "LicenseMigrator",
+        "kwargs": {},
+        "name": "licensemigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "ExtraJinja2KeysCleanup",
+        "kwargs": {},
+        "name": "extrajinja2keyscleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "NoCondaInspectMigrator",
+        "kwargs": {},
+        "name": "nocondainspectmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "MPIPinRunAsBuildCleanup",
+        "kwargs": {},
+        "name": "mpipinrunasbuildcleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "PyPIOrgMigrator",
+        "kwargs": {},
+        "name": "pypiorgmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "CombineV1ConditionsMigrator",
+        "kwargs": {},
+        "name": "combinev1conditionsmigrator"
+      }
+    ],
+    "pr_limit": 2,
+    "primary_key": "cuda_compiler_version",
+    "top_level": {
+      "__set__": true,
+      "elements": []
+    },
+    "total_graph": null,
+    "wait_for_migrators": [
+      "cuda129",
+      "aarch64 and ppc64le addition"
+    ]
+  },
+  "name": "arm_variant_type"
+}
