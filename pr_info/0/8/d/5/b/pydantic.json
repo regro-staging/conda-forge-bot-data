@@ -10,6 +10,17 @@
         "migrator_version": 0,
         "version": "2.10.2"
       }
+    },
+    {
+      "PR": {
+        "__lazy_json__": "pr_json/cd4dd730-2ce7-4ea2-b38a-30a158df37d7.json"
+      },
+      "data": {
+        "bot_rerun": false,
+        "migrator_name": "NoarchPythonMinMigrator",
+        "migrator_version": 1,
+        "name": "noarch_python_min"
+      }
     }
   ],
   "bad": false,
