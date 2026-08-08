@@ -1,9 +1,62 @@
 {
- "directed": true,
- "graph": {
-  "outputs_lut": {}
- },
- "links": [],
- "multigraph": false,
- "nodes": []
+  "directed": true,
+  "graph": {
+    "outputs_lut": {},
+    "strong_exports": {
+      "__set__": true,
+      "elements": [
+        "c_compiler_stub",
+        "c_stdlib_stub",
+        "cuda_compiler_stub",
+        "cxx_compiler_stub",
+        "fortran_compiler_stub"
+      ]
+    }
+  },
+  "links": [],
+  "multigraph": false,
+  "nodes": [
+    {
+      "id": "conda-forge-pinning",
+      "payload": {
+        "__lazy_json__": "node_attrs/conda-forge-pinning.json"
+      }
+    },
+    {
+      "id": "dominodatalab",
+      "payload": {
+        "__lazy_json__": "node_attrs/dominodatalab.json"
+      }
+    },
+    {
+      "id": "fastapi",
+      "payload": {
+        "__lazy_json__": "node_attrs/fastapi.json"
+      }
+    },
+    {
+      "id": "polars",
+      "payload": {
+        "__lazy_json__": "node_attrs/polars.json"
+      }
+    },
+    {
+      "id": "pydantic",
+      "payload": {
+        "__lazy_json__": "node_attrs/pydantic.json"
+      }
+    },
+    {
+      "id": "witr",
+      "payload": {
+        "__lazy_json__": "node_attrs/witr.json"
+      }
+    },
+    {
+      "id": "zizmor",
+      "payload": {
+        "__lazy_json__": "node_attrs/zizmor.json"
+      }
+    }
+  ]
 }
