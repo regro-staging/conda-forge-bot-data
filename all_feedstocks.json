@@ -1,0 +1,21 @@
+{
+  "active": [
+    "conda-forge-pinning",
+    "dominodatalab",
+    "fastapi",
+    "polars",
+    "pydantic",
+    "witr",
+    "zizmor"
+  ],
+  "archived": [],
+  "default_branches": {
+    "conda-forge-pinning": "main",
+    "dominodatalab": "main",
+    "fastapi": "main",
+    "polars": "main",
+    "pydantic": "main",
+    "witr": "main",
+    "zizmor": "main"
+  }
+}
