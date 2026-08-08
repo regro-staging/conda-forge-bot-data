@@ -35,6 +35,18 @@
         "migrator_version": 0,
         "name": "flang21"
       }
+    },
+    {
+      "PR": {
+        "__lazy_json__": "pr_json/4235168348.json"
+      },
+      "data": {
+        "bot_rerun": false,
+        "migrator_name": "MigrationYaml",
+        "migrator_object_version": 1,
+        "migrator_version": 0,
+        "name": "cfitsio464"
+      }
     }
   ],
   "bad": false,
