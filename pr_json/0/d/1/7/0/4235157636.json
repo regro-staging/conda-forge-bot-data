@@ -1,0 +1,26 @@
+{
+  "base": {
+    "repo": {
+      "name": "witr-feedstock"
+    }
+  },
+  "closed_at": null,
+  "created_at": "2026-08-08T16:12:11Z",
+  "draft": false,
+  "e_tag": "\"5584319e62a74ec303cff52ce365580dafe95d14837a775804d80e26543d38fd\"",
+  "head": {
+    "ref": "bot-pr_arm64_win_h30ebe7"
+  },
+  "html_url": "https://github.com/conda-forge-bot-staging/witr-feedstock/pull/1514",
+  "id": 4235157636,
+  "labels": [],
+  "last_fetched": "2026-08-08T16:12:12.210876",
+  "last_modified": null,
+  "mergeable": null,
+  "mergeable_state": "unknown",
+  "merged": false,
+  "merged_at": null,
+  "number": 1514,
+  "state": "open",
+  "updated_at": "2026-08-08T16:12:11Z"
+}
