@@ -24,14 +24,7 @@
         },
         "links": [],
         "multigraph": false,
-        "nodes": [
-          {
-            "id": "witr",
-            "payload": {
-              "__lazy_json__": "node_attrs/witr.json"
-            }
-          }
-        ]
+        "nodes": []
       }
     },
     "graph": {
