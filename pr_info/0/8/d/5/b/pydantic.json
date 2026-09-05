@@ -10,6 +10,18 @@
         "migrator_version": 1,
         "name": "noarch_python_min"
       }
+    },
+    {
+      "PR": {
+        "__lazy_json__": "pr_json/4c2ff2af-c1b8-4565-9392-a241fcec948d.json"
+      },
+      "data": {
+        "bot_rerun": false,
+        "branch": "1.x",
+        "migrator_name": "NoarchPythonMinMigrator",
+        "migrator_version": 1,
+        "name": "noarch_python_min"
+      }
     }
   ],
   "bad": false,
