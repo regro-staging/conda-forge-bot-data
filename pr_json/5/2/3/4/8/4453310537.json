@@ -1,0 +1,26 @@
+{
+  "base": {
+    "repo": {
+      "name": "conda-forge-pinning-feedstock"
+    }
+  },
+  "closed_at": null,
+  "created_at": "2026-09-05T22:25:17Z",
+  "draft": false,
+  "e_tag": "\"d8d0df61a65a9d6c3b81dedee3d4875e8d047516acb8e622a6999aa4128585cd\"",
+  "head": {
+    "ref": "rebuild-pytorch213-0-1_hca817d"
+  },
+  "html_url": "https://github.com/conda-forge-bot-staging/conda-forge-pinning-feedstock/pull/30956",
+  "id": 4453310537,
+  "labels": [],
+  "last_fetched": "2026-09-05T22:25:18.352554",
+  "last_modified": null,
+  "mergeable": null,
+  "mergeable_state": "unknown",
+  "merged": false,
+  "merged_at": null,
+  "number": 30956,
+  "state": "open",
+  "updated_at": "2026-09-05T22:25:17Z"
+}
