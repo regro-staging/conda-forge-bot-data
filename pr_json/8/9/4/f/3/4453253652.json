@@ -1,0 +1,26 @@
+{
+  "base": {
+    "repo": {
+      "name": "fastapi-feedstock"
+    }
+  },
+  "closed_at": null,
+  "created_at": "2026-09-05T22:10:35Z",
+  "draft": false,
+  "e_tag": "\"5f07e696900a81ba869fea29559c9dd861195972269263f9f5b443c83d7c4ecb\"",
+  "head": {
+    "ref": "0.116.1_h92927f"
+  },
+  "html_url": "https://github.com/conda-forge-bot-staging/fastapi-feedstock/pull/3133",
+  "id": 4453253652,
+  "labels": [],
+  "last_fetched": "2026-09-05T22:10:36.448913",
+  "last_modified": null,
+  "mergeable": null,
+  "mergeable_state": "unknown",
+  "merged": false,
+  "merged_at": null,
+  "number": 3133,
+  "state": "open",
+  "updated_at": "2026-09-05T22:10:35Z"
+}
