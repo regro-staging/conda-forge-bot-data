@@ -1,0 +1,26 @@
+{
+  "base": {
+    "repo": {
+      "name": "dominodatalab-feedstock"
+    }
+  },
+  "closed_at": null,
+  "created_at": "2026-09-08T21:54:29Z",
+  "draft": false,
+  "e_tag": "\"1c9190080ed42c2da04dd0fcb143ad74a0017aa6db5f8bd6d9b2e3a9a0de0393\"",
+  "head": {
+    "ref": "2.0.0_h7d98d4"
+  },
+  "html_url": "https://github.com/conda-forge-bot-staging/dominodatalab-feedstock/pull/1411",
+  "id": 4478911871,
+  "labels": [],
+  "last_fetched": "2026-09-08T21:54:30.130909",
+  "last_modified": null,
+  "mergeable": null,
+  "mergeable_state": "unknown",
+  "merged": false,
+  "merged_at": null,
+  "number": 1411,
+  "state": "open",
+  "updated_at": "2026-09-08T21:54:29Z"
+}
