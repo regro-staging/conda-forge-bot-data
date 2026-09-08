@@ -1,0 +1,201 @@
+{
+  "__migrator__": true,
+  "args": [],
+  "class": "WinArm64",
+  "kwargs": {
+    "effective_graph": {
+      "__nx_digraph__": true,
+      "node_link_data": {
+        "directed": true,
+        "graph": {
+          "outputs_lut": {
+            "__lazy_json__": "outputs_to_feedstocks.json"
+          },
+          "strong_exports": {
+            "__set__": true,
+            "elements": [
+              "c_compiler_stub",
+              "c_stdlib_stub",
+              "cuda_compiler_stub",
+              "cxx_compiler_stub",
+              "fortran_compiler_stub"
+            ]
+          }
+        },
+        "links": [],
+        "multigraph": false,
+        "nodes": [
+          {
+            "id": "witr",
+            "payload": {
+              "__lazy_json__": "node_attrs/witr.json"
+            }
+          }
+        ]
+      }
+    },
+    "graph": {
+      "__nx_digraph__": true,
+      "node_link_data": {
+        "directed": true,
+        "graph": {
+          "outputs_lut": {
+            "__lazy_json__": "outputs_to_feedstocks.json"
+          },
+          "strong_exports": {
+            "__set__": true,
+            "elements": [
+              "c_compiler_stub",
+              "c_stdlib_stub",
+              "cuda_compiler_stub",
+              "cxx_compiler_stub",
+              "fortran_compiler_stub"
+            ]
+          }
+        },
+        "links": [],
+        "multigraph": false,
+        "nodes": [
+          {
+            "id": "witr",
+            "payload": {
+              "__lazy_json__": "node_attrs/witr.json"
+            }
+          }
+        ]
+      }
+    },
+    "name": "support windows arm64 platform",
+    "piggy_back_migrations": [
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "CondaForgeYAMLCleanup",
+        "kwargs": {},
+        "name": "condaforgeyamlcleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "UpdateCMakeArgsWinMigrator",
+        "kwargs": {},
+        "name": "updatecmakeargswinmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "GuardTestingWinMigrator",
+        "kwargs": {},
+        "name": "guardtestingwinmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "CrossRBaseWinMigrator",
+        "kwargs": {},
+        "name": "crossrbasewinmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "CrossPythonMigrator",
+        "kwargs": {},
+        "name": "crosspythonmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "NoCondaInspectMigrator",
+        "kwargs": {},
+        "name": "nocondainspectmigrator"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "MPIPinRunAsBuildCleanup",
+        "kwargs": {},
+        "name": "mpipinrunasbuildcleanup"
+      },
+      {
+        "__mini_migrator__": true,
+        "args": [],
+        "class": "CombineV1ConditionsMigrator",
+        "kwargs": {},
+        "name": "combinev1conditionsmigrator"
+      }
+    ],
+    "pr_limit": 5,
+    "target_packages": {
+      "__set__": true,
+      "elements": [
+        "addlicense",
+        "age",
+        "aws-vault",
+        "beads",
+        "caddy",
+        "conda",
+        "conda-build",
+        "conda-deny",
+        "conda-forge-ci-setup",
+        "conda-mirror",
+        "crush",
+        "dasel",
+        "diffnav",
+        "doggo",
+        "flyctl",
+        "gastown",
+        "gh",
+        "gh-dash",
+        "gh-enhance",
+        "granted",
+        "hclfmt",
+        "ini-file",
+        "k9s",
+        "kitops",
+        "ksops",
+        "lefthook",
+        "mamba",
+        "micromamba",
+        "minio-client",
+        "minio-server",
+        "mkcert",
+        "msgvault",
+        "nomad",
+        "ntfy",
+        "octo-sts",
+        "pixi",
+        "pixi-diff",
+        "pixi-inject",
+        "pixi-pack",
+        "python",
+        "rattler-build",
+        "rattler-index",
+        "s3-proxy",
+        "saml-auth-proxy",
+        "sbb-tui",
+        "seaweedfs",
+        "shoutrrr",
+        "smokeping_prober",
+        "sqlite-scanner",
+        "subfinder",
+        "tea",
+        "termdbms",
+        "tflint",
+        "trzsz",
+        "tssh",
+        "tsshd",
+        "vhs",
+        "wishlist",
+        "witr"
+      ]
+    },
+    "top_level": {
+      "__set__": true,
+      "elements": [
+        "witr"
+      ]
+    },
+    "total_graph": null
+  },
+  "name": "supportwindowsarm64platform"
+}
